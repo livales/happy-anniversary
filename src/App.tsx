@@ -1,10 +1,15 @@
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Surat from './pages/Surat';
+import Gift from './pages/Gift';
+import Anniversary13 from './pages/Anniversary13';
+import './index.css';
 
 const queryClient = new QueryClient();
 
@@ -13,13 +18,17 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <Router>
+        <div className="min-h-screen romantic-gradient">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/surat" element={<Surat />} />
+            <Route path="/surat/anniversary-13" element={<Anniversary13 />} />
+            <Route path="/gift" element={<Gift />} />
+          </Routes>
+        </div>
+      </Router>
     </TooltipProvider>
   </QueryClientProvider>
 );
