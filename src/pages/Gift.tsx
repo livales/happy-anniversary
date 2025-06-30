@@ -105,10 +105,9 @@ const Gift = () => {
             </p>
           </div>
 
-          {/* Flower Animation */}
-          <div ref={flowerRef} className="relative flex items-end justify-center h-64">
-            <div className="flower-stem bg-green-400 w-2 rounded-full absolute bottom-0"></div>
-            <div className="flower-bud relative">
+          {/* Flower Animation - Fixed positioning */}
+          <div ref={flowerRef} className="relative flex flex-col items-center h-64">
+            <div className="flower-bud relative z-10">
               <div className="w-16 h-16 bg-yellow-300 rounded-full relative">
                 {/* Petals */}
                 <div className="petal absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-12 bg-pink-400 rounded-full"></div>
@@ -121,6 +120,7 @@ const Gift = () => {
                 <div className="petal absolute -bottom-3 -left-3 w-10 h-10 bg-pink-300 rounded-full"></div>
               </div>
             </div>
+            <div className="flower-stem bg-green-400 w-2 rounded-full mt-0"></div>
           </div>
 
           {/* Bears Animation */}
