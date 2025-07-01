@@ -1,7 +1,8 @@
-
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import UniversalLoading from '../components/UniversalLoading';
+import { usePageLoading } from '../hooks/usePageLoading';
 import CakeAnimation from '../components/anniversary14/CakeAnimation';
 import Section1Title from '../components/anniversary14/Section1Title';
 import Section2Ingredients from '../components/anniversary14/Section2Ingredients';
@@ -18,8 +19,11 @@ gsap.registerPlugin(ScrollTrigger);
 const Anniversary14 = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { currentBgColor } = useScrollColorTransition();
+  const { isLoading } = usePageLoading(2500);
 
   useEffect(() => {
+    if (isLoading) return;
+
     // Initial page setup
     gsap.set('body', { overflow: 'hidden' });
     
@@ -31,35 +35,38 @@ const Anniversary14 = () => {
       clearTimeout(timer);
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
-  }, []);
+  }, [isLoading]);
 
   return (
-    <div 
-      ref={containerRef}
-      className="relative min-h-screen"
-      style={{
-        background: currentBgColor,
-        transition: 'background 1s ease-in-out'
-      }}
-    >
-      <AudioPlayer14 />
-      
-      {/* Fixed Cake Animation */}
-      <div className="fixed top-20 right-4 lg:right-8 z-30 w-64 h-64 lg:w-80 lg:h-80">
-        <CakeAnimation />
-      </div>
+    <>
+      <UniversalLoading isLoading={isLoading} />
+      <div 
+        ref={containerRef}
+        className="relative min-h-screen"
+        style={{
+          background: currentBgColor,
+          transition: 'background 1s ease-in-out'
+        }}
+      >
+        <AudioPlayer14 />
+        
+        {/* Fixed Cake Animation */}
+        <div className="fixed top-20 right-4 lg:right-8 z-30 w-64 h-64 lg:w-80 lg:h-80">
+          <CakeAnimation />
+        </div>
 
-      {/* Content Sections */}
-      <div className="relative z-10">
-        <Section1Title />
-        <Section2Ingredients />
-        <Section3Instructions />
-        <Section4Challenge />
-        <Section5TeamChef />
-        <Section6FinalResult />
-        <Section7Closing />
+        {/* Content Sections */}
+        <div className="relative z-10">
+          <Section1Title />
+          <Section2Ingredients />
+          <Section3Instructions />
+          <Section4Challenge />
+          <Section5TeamChef />
+          <Section6FinalResult />
+          <Section7Closing />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
