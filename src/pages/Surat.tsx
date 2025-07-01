@@ -1,8 +1,9 @@
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { gsap } from "gsap";
+import { Calendar, Lock } from "lucide-react";
 
-import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { gsap } from 'gsap';
-import { Calendar, Lock } from 'lucide-react';
+import image1 from "../assets/images/1-anniversary.jpg";
 
 const Surat = () => {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -17,7 +18,7 @@ const Surat = () => {
           y: -10,
           scale: 1.02,
           boxShadow: "0 20px 40px rgba(236, 72, 153, 0.2)",
-          ease: "power2.out"
+          ease: "power2.out",
         });
       };
 
@@ -27,16 +28,16 @@ const Surat = () => {
           y: 0,
           scale: 1,
           boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
-          ease: "power2.out"
+          ease: "power2.out",
         });
       };
 
-      card.addEventListener('mouseenter', handleMouseEnter);
-      card.addEventListener('mouseleave', handleMouseLeave);
+      card.addEventListener("mouseenter", handleMouseEnter);
+      card.addEventListener("mouseleave", handleMouseLeave);
 
       return () => {
-        card.removeEventListener('mouseenter', handleMouseEnter);
-        card.removeEventListener('mouseleave', handleMouseLeave);
+        card.removeEventListener("mouseenter", handleMouseEnter);
+        card.removeEventListener("mouseleave", handleMouseLeave);
       };
     });
   }, []);
@@ -49,7 +50,8 @@ const Surat = () => {
             Koleksi Surat Cinta
           </h1>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Setiap surat adalah rekaman perjalanan cinta kita, tersimpan dengan penuh kasih sayang
+            Setiap surat adalah rekaman perjalanan cinta kita, tersimpan dengan
+            penuh kasih sayang
           </p>
         </div>
 
@@ -62,11 +64,15 @@ const Surat = () => {
             >
               <div className="h-48 bg-gradient-to-br from-pink-200 to-purple-200 relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-6xl">💕</span>
+                  <span className="text-6xl">
+                    <img src={image1} alt="Anniversary ke-13 image" />
+                  </span>
                 </div>
                 <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
                   <Calendar className="w-4 h-4 text-pink-600 inline mr-2" />
-                  <span className="text-sm font-medium text-pink-600">13 Bulan</span>
+                  <span className="text-sm font-medium text-pink-600">
+                    13 Bulan
+                  </span>
                 </div>
               </div>
               <div className="p-6">
@@ -74,7 +80,8 @@ const Surat = () => {
                   Anniversary ke-13
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Surat spesial untuk merayakan 13 bulan perjalanan cinta kita yang penuh kebahagiaan dan kenangan indah...
+                  Surat spesial untuk merayakan 13 bulan perjalanan cinta kita
+                  yang penuh kebahagiaan dan kenangan indah...
                 </p>
                 <div className="mt-4 text-pink-500 text-sm font-medium">
                   Baca Selengkapnya →
@@ -94,7 +101,9 @@ const Surat = () => {
               </div>
               <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
                 <Calendar className="w-4 h-4 text-gray-500 inline mr-2" />
-                <span className="text-sm font-medium text-gray-500">14 Bulan</span>
+                <span className="text-sm font-medium text-gray-500">
+                  14 Bulan
+                </span>
               </div>
             </div>
             <div className="p-6">
@@ -102,7 +111,8 @@ const Surat = () => {
                 Anniversary ke-14
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Surat berikutnya akan segera hadir untuk melengkapi koleksi kenangan indah kita...
+                Surat berikutnya akan segera hadir untuk melengkapi koleksi
+                kenangan indah kita...
               </p>
               <div className="mt-4 text-gray-400 text-sm font-medium">
                 Segera Hadir...
@@ -134,7 +144,8 @@ const Surat = () => {
                 Surat Berikutnya...
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Cerita cinta kita akan terus berlanjut dengan surat-surat indah lainnya...
+                Cerita cinta kita akan terus berlanjut dengan surat-surat indah
+                lainnya...
               </p>
               <div className="mt-4 text-gray-300 text-sm font-medium">
                 Coming Soon...
