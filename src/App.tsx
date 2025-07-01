@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Surat from './pages/Surat';
 import Gift from './pages/Gift';
 import Anniversary13 from './pages/Anniversary13';
+import Anniversary14 from './pages/Anniversary14';
 import './index.css';
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/surat" element={<Surat />} />
             <Route path="/surat/anniversary-13" element={<Anniversary13 />} />
+            <Route path="/surat/anniversary-14" element={<Anniversary14 />} />
             <Route path="/gift" element={<Gift />} />
           </Routes>
         </div>
