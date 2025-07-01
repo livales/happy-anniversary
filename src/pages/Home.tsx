@@ -62,7 +62,7 @@ const Home = () => {
         className="min-h-screen pt-20 pb-16 px-4 relative overflow-hidden"
         style={{
           backgroundImage: `url(${wallpaper}),
-                           linear-gradient(135deg, rgba(255, 238, 243, 0.9) 0%, rgba(243, 231, 240, 0.9) 25%, rgba(231, 213, 240, 0.9) 50%, rgba(220, 196, 232, 0.9) 75%, rgba(209, 179, 224, 0.9) 100%)`,
+                            linear-gradient(135deg, rgba(255, 238, 243, 0.9) 0%, rgba(243, 231, 240, 0.9) 25%, rgba(231, 213, 240, 0.9) 50%, rgba(220, 196, 232, 0.9) 75%, rgba(209, 179, 224, 0.9) 100%)`,
           backgroundBlendMode: "overlay",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -105,37 +105,39 @@ const Home = () => {
             {/* Right Side - Interactive Letter */}
             <div
               ref={containerRef}
-              className="relative h-96 lg:h-[500px] perspective-1000 love-cursor"
+              className="relative min-h-[24rem] lg:min-h-[32rem] perspective-1000 love-cursor"
             >
               <div
                 ref={letterRef}
-                className="love-cursor absolute inset-0 bg-gradient-to-br from-pink-50/90 to-purple-50/90 backdrop-blur-sm rounded-lg shadow-2xl p-8 cursor-pointer transform-gpu border border-white/50"
+                className="love-cursor absolute inset-0 bg-gradient-to-br from-pink-50/90 to-purple-50/90 backdrop-blur-sm rounded-lg shadow-2xl p-4 sm:p-6 md:p-8 cursor-pointer transform-gpu border border-white/50"
                 style={{ transformStyle: "preserve-3d" }}
               >
-                <div className="h-full border-2 border-dashed border-pink-300 rounded-lg p-6 flex flex-col justify-between">
+                <div className="h-full border-2 border-dashed border-pink-300 rounded-lg p-3 sm:p-4 md:p-6 flex flex-col justify-between">
                   <div>
-                    <h3 className="font-dancing text-3xl text-pink-700 mb-4 drop-shadow-sm">
+                    <h3 className="font-dancing text-2xl sm:text-3xl text-pink-700 mb-4 drop-shadow-sm">
                       Surat Cinta
                     </h3>
                     <div className="space-y-3 text-gray-700">
-                      <p className="italic font-medium">
+                      <p className="italic font-medium text-sm sm:text-base">
                         Sayangku yang terkasih,
                       </p>
-                      <p className="font-medium">
+                      <p className="font-medium text-sm sm:text-base">
                         Setiap hari bersamamu adalah halaman baru dalam cerita
                         cinta kita yang indah...
                       </p>
-                      <p className="font-medium">
+                      <p className="font-medium text-sm sm:text-base">
                         Terima kasih telah menjadi alasan aku tersenyum setiap
                         hari.
                       </p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-script text-pink-700 text-lg">
+                    <p className="font-script text-pink-700 sm:text-lg">
                       Dengan cinta,
                     </p>
-                    <p className="font-script text-pink-700 text-xl mt-2">💕</p>
+                    <p className="font-script text-pink-700 text-lg sm:text-xl mt-2">
+                      💕
+                    </p>
                   </div>
                 </div>
               </div>
