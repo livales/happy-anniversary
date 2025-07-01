@@ -92,7 +92,7 @@ const Section7Closing = () => {
           {/* Floating hearts */}
           <div className="floating-heart absolute -top-8 -left-8 text-2xl">💖</div>
           <div className="floating-heart absolute -top-4 right-4 text-xl">💕</div>
-          <div className="floating-heart absolute top-2 -right-12 text-2xl">💝</div>
+          <div className="floating-heart absolute top-2 right-4 text-2xl">💝</div>
           <div className="floating-heart absolute -bottom-6 left-8 text-xl">💗</div>
           <div className="floating-heart absolute -bottom-8 -right-4 text-2xl">💓</div>
         </div>
