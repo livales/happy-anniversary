@@ -19,7 +19,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <Router>
-        <div className="min-h-screen romantic-gradient">
+        <div className="min-h-screen">
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
