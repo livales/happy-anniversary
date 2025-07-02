@@ -9,40 +9,33 @@ const Section3Instructions = () => {
     {
       step: 1,
       text: "Pertama, siapkan wadah paling besar, yaitu hati kita berdua. Tuang cinta dan sayang sebagai fondasi utama. Aduk terus sampai merata, jangan biarkan ada gumpalan keraguan.",
-      image:
-        "https://images.unsplash.com/photo-1556909114-5d1c80b1ee7e?w=400&h=300&fit=crop&auto=format",
     },
     {
       step: 2,
       text: "Masukkan 2 liter kesabaran pelan-pelan, terutama pas aku lagi keras kepala dan bikin kamu kesel. Maaf yaa sayang, adonan ini kadang susah diatur, tapi makasih kamu selalu sabar ngaduknya.",
-      image:
-        "https://images.unsplash.com/photo-1516627145497-ae4099cbf553?w=400&h=300&fit=crop&auto=format",
     },
     {
       step: 3,
       text: "Tambahkan 500 gram kegigihanmu. Aku selalu liat dari jauh sini gimana kamu ga pernah nyerah, itu yang bikin adonan kita jadi makin kuat dan ga gampang hancur.",
-      image:
-        "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=300&fit=crop&auto=format",
     },
     {
       step: 4,
       text: "Campurkan semangkuk besar dukungan. Ini penting banget, apalagi pas kita lagi sama-sama cape. Kita aduk bareng-bareng biar saling nguatin.",
-      image:
-        "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=300&fit=crop&auto=format",
     },
     {
       step: 5,
       text: "Jangan lupa taburkan rindu secukupnya. Emang kadang bikin nyesek, tapi justru ini yang bikin setiap obrolan dan pertemuan kita (walaupun online) jadi terasa manis banget.",
-      image:
-        "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=300&fit=crop&auto=format",
     },
     {
       step: 6,
       text: "Terakhir, masukkan tawa dan canda sebanyak-banyaknya biar adonan kita ringan dan hepii.",
-      image:
-        "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=300&fit=crop&auto=format",
     },
   ];
+
+  const getStepEmoji = (step: number) => {
+    const emojis = ["💝", "⏳", "💪", "🤝", "💌", "😄"];
+    return emojis[step - 1] || "❤️";
+  };
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -113,13 +106,28 @@ const Section3Instructions = () => {
                   index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""
                 }`}
               >
-                <div className="relative overflow-hidden rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                  <img
-                    src={instruction.image}
-                    alt={`Step ${instruction.step}`}
-                    className="w-full h-64 lg:h-80 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <div className="relative rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500 bg-gradient-to-br from-pink-100/80 to-purple-100/80 backdrop-blur-sm border border-white/50 h-64 lg:h-80 flex items-center justify-center overflow-hidden">
+                  <div className="text-6xl lg:text-8xl animate-pulse">
+                    {getStepEmoji(instruction.step)}
+                  </div>
+                  <div className="absolute inset-0 pointer-events-none">
+                    {Array.from({ length: 6 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute animate-float"
+                        style={{
+                          left: `${Math.random() * 80 + 10}%`,
+                          top: `${Math.random() * 80 + 10}%`,
+                          animationDelay: `${i * 0.5}s`,
+                          animationDuration: `${3 + Math.random() * 2}s`,
+                        }}
+                      >
+                        <span className="text-2xl opacity-60">
+                          {i % 2 === 0 ? "💕" : "🌸"}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

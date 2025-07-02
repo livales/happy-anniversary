@@ -14,6 +14,7 @@ import Section7Closing from "../components/anniversary14/Section7Closing";
 import lauvilikemebetter from "../assets/lauv-i-like-me-better.mp3";
 import AudioPlayer from "../components/anniversary/AudioPlayer";
 import { useScrollColorTransition } from "../hooks/useScrollColorTransition";
+import ScrollFloatingParticles from "../components/anniversary14/ScrollFloatingParticles";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,6 +52,9 @@ const Anniversary14 = () => {
       >
         {/* <AudioPlayer14 /> */}
         <AudioPlayer audioSrc={lauvilikemebetter} />
+        
+        {/* Progressive Floating Particles */}
+        <ScrollFloatingParticles />
 
         {/* Fixed Cake Animation */}
         <div className="fixed top-20 right-4 lg:right-8 z-30 w-64 h-64 lg:w-80 lg:h-80">
