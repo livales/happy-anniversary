@@ -24,12 +24,12 @@ const Section2Ingredients = () => {
     {
       text: "Semangkuk besar dukungan dan kepercayaan",
       icon: "🤝",
-      desc: "semangat semangatt cintakuu!!",
+      desc: "(semangat semangatt cantikkuuu!!)",
     },
     {
       text: "Taburan rindu secukupnya",
       icon: "💭",
-      desc: "(efek samping LDR, bikin kue-nya makin dinanti)",
+      desc: "(ehh malah kelebihan, efek samping LDR, bikin kue-nya makin dinanti)",
     },
     {
       text: "Beberapa sendok kemarahan",
