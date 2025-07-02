@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useOptimizedAnimations } from "../../hooks/useOptimizedAnimations";
+import AnimatedSection from "./AnimatedSection";
 
 const Section3Instructions = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { createScrollAnimation } = useOptimizedAnimations();
 
   const instructions = [
     {
@@ -41,90 +42,63 @@ const Section3Instructions = () => {
     const section = sectionRef.current;
     if (!section) return;
 
-    // Animate title
-    ScrollTrigger.create({
-      trigger: section,
-      start: "top 60%",
-      end: "bottom 40%",
-      animation: gsap.fromTo(
-        section.querySelector(".section-title"),
-        { opacity: 0, y: -30 },
-        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
-      ),
-    });
-
-    // Animate each step with stagger
-    gsap.fromTo(
-      section.querySelectorAll(".instruction-step"),
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.3,
-        ease: "power2.out",
-        scrollTrigger: {
+    // Progressive line fill animation
+    const progressLine = section.querySelector(".progress-line");
+    if (progressLine) {
+      createScrollAnimation(
+        progressLine,
+        { scaleY: 0 },
+        { scaleY: 1, ease: "none" },
+        {
           trigger: section,
-          start: "top 70%",
-          end: "bottom 30%",
-        }
-      }
-    );
-
-    // Parallax animation for step icons
-    section.querySelectorAll(".step-icon").forEach((icon, index) => {
-      gsap.to(icon, {
-        y: -30 - (index * 10),
-        rotation: 360,
-        scale: 1.1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "bottom top",
+          start: "top 80%",
+          end: "bottom 20%",
           scrub: 1,
-        },
-      });
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
+        }
+      );
+    }
+  }, [createScrollAnimation]);
 
   return (
-    <section
+    <AnimatedSection
       ref={sectionRef}
-      data-section="instructions"
-      className="min-h-screen flex items-center justify-center px-6 lg:px-12 py-20"
+      sectionData="instructions"
+      titleSelector=".section-title"
+      itemSelector=".instruction-step"
     >
       <div className="max-w-6xl mx-auto">
         <h2 className="section-title text-3xl lg:text-5xl font-bold text-center text-yellow-700 mb-16 font-serif">
           Cara Membuat:
         </h2>
 
-        <div className="space-y-12">
+        {/* Progress Line */}
+        <div className="relative flex justify-center mb-8">
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gray-200 rounded-full" style={{ height: `${instructions.length * 220}px` }}>
+            <div className="progress-line w-full bg-gradient-to-b from-yellow-400 to-pink-400 rounded-full origin-top transform scale-y-0"></div>
+          </div>
+        </div>
+
+        <div className="space-y-12 relative">
           {instructions.map((instruction, index) => (
             <div
               key={index}
-              className={`instruction-step grid lg:grid-cols-2 gap-8 items-center ${
+              className={`instruction-step grid lg:grid-cols-2 gap-8 items-center relative ${
                 index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
-              }`}
-            >
+              }`}>
+              {/* Step number circle positioned on the line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg z-10 shadow-lg border-4 border-white">
+                {instruction.step}
+              </div>
               <div
                 className={`space-y-4 ${
                   index % 2 === 1 ? "lg:col-start-2" : ""
                 }`}
               >
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    {instruction.step}
-                  </div>
-                  <div className="h-1 flex-1 bg-gradient-to-r from-yellow-400 to-transparent rounded"></div>
+                <div className="mt-12">
+                  <p className="text-lg lg:text-xl text-gray-700 leading-relaxed font-medium bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+                    {instruction.text}
+                  </p>
                 </div>
-                <p className="text-lg lg:text-xl text-gray-700 leading-relaxed font-medium bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-                  {instruction.text}
-                </p>
               </div>
 
               <div
@@ -160,7 +134,7 @@ const Section3Instructions = () => {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 

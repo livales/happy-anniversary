@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const ScrollFloatingParticles = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const particleIntervals = useRef<NodeJS.Timeout[]>([]);
 
   useEffect(() => {
     // Track scroll progress for the entire page
@@ -19,6 +20,8 @@ const ScrollFloatingParticles = () => {
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
+      particleIntervals.current.forEach(clearInterval);
+      particleIntervals.current = [];
     };
   }, []);
 
@@ -34,8 +37,8 @@ const ScrollFloatingParticles = () => {
       baseParticleCount + (maxParticleCount - baseParticleCount) * scrollProgress
     );
 
-    // Create particles
-    const createParticle = (type: "heart" | "flower") => {
+    // Optimized particle creation
+    const createParticle = useCallback((type: "heart" | "flower") => {
       const particle = document.createElement("div");
       const symbols = {
         heart: ["💕", "💖", "💗"],
@@ -51,7 +54,6 @@ const ScrollFloatingParticles = () => {
       container.appendChild(particle);
 
       const duration = 6 + Math.random() * 4;
-      const delay = Math.random() * 1;
 
       gsap.fromTo(
         particle,
@@ -66,23 +68,20 @@ const ScrollFloatingParticles = () => {
           scale: 0.6 + Math.random() * 0.3,
           x: (Math.random() - 0.5) * 150,
           duration,
-          delay,
           ease: "power1.inOut",
           onComplete: () => particle.remove(),
         }
       );
-    };
+    }, [container, scrollProgress]);
 
-    // Create particles from start of scroll - reduced frequency
+    // Create particles from start of scroll - optimized
     const particleInterval = setInterval(() => {
-      if (scrollProgress > 0.05) {
-        for (let i = 0; i < currentParticleCount; i++) {
-          setTimeout(() => {
-            createParticle(Math.random() > 0.7 ? "heart" : "flower");
-          }, i * 500);
-        }
+      if (scrollProgress > 0.05 && currentParticleCount > 0) {
+        createParticle(Math.random() > 0.7 ? "heart" : "flower");
       }
-    }, 3000);
+    }, 4000);
+
+    particleIntervals.current.push(particleInterval);
 
     return () => {
       clearInterval(particleInterval);
