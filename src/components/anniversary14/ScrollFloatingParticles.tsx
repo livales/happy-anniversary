@@ -25,27 +25,19 @@ const ScrollFloatingParticles = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const container = containerRef.current;
-    
-    // Calculate particles based on scroll progress - reduced for performance
-    const baseParticleCount = 1;
-    const maxParticleCount = 5;
-    const currentParticleCount = Math.floor(
-      baseParticleCount + (maxParticleCount - baseParticleCount) * scrollProgress
-    );
-
-    // Optimized particle creation
-    const createParticle = useCallback((type: "heart" | "flower") => {
+  // Optimized particle creation
+  const createParticle = useCallback(
+    (type: "heart" | "flower") => {
+      const container = containerRef.current;
+      if (!container) return;
       const particle = document.createElement("div");
       const symbols = {
         heart: ["💕", "💖", "💗"],
         flower: ["🌸", "🌺", "🌷"],
       };
-      
-      particle.innerHTML = symbols[type][Math.floor(Math.random() * symbols[type].length)];
+
+      particle.innerHTML =
+        symbols[type][Math.floor(Math.random() * symbols[type].length)];
       particle.className = "absolute text-lg pointer-events-none z-10";
       particle.style.left = Math.random() * 100 + "vw";
       particle.style.opacity = String(0.3 + scrollProgress * 0.3);
@@ -72,7 +64,20 @@ const ScrollFloatingParticles = () => {
           onComplete: () => particle.remove(),
         }
       );
-    }, [container, scrollProgress]);
+    },
+    [scrollProgress]
+  );
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    // Calculate particles based on scroll progress - reduced for performance
+    const baseParticleCount = 1;
+    const maxParticleCount = 5;
+    const currentParticleCount = Math.floor(
+      baseParticleCount +
+        (maxParticleCount - baseParticleCount) * scrollProgress
+    );
 
     // Create particles from start of scroll - optimized
     const particleInterval = setInterval(() => {
@@ -86,14 +91,14 @@ const ScrollFloatingParticles = () => {
     return () => {
       clearInterval(particleInterval);
     };
-  }, [scrollProgress]);
+  }, [scrollProgress, createParticle]);
 
   // Create floating background hearts that intensify with scroll
   useEffect(() => {
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-    
+
     const createFloatingHeart = () => {
       const heart = document.createElement("div");
       const hearts = ["💕", "💖", "💗"];

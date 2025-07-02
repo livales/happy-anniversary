@@ -1,10 +1,10 @@
-
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { Calendar, Lock } from "lucide-react";
 
-import image1 from "../assets/images/1-anniversary.jpg";
+import anniversary13 from "../assets/images/anniversary-13/1-anniversary.jpg";
+import anniversary14 from "../assets/images/anniversary-14/1-anniversary.jpg";
 
 const Surat = () => {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -66,7 +66,7 @@ const Surat = () => {
               <div className="h-48 bg-gradient-to-br from-pink-200 to-purple-200 relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="text-6xl">
-                    <img src={image1} alt="Anniversary ke-13 image" />
+                    <img src={anniversary13} alt="Anniversary ke-13 image" />
                   </span>
                 </div>
                 <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
@@ -99,7 +99,9 @@ const Surat = () => {
             >
               <div className="h-48 bg-gradient-to-br from-orange-200 to-yellow-200 relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-6xl">🎂</span>
+                  <span className="text-6xl">
+                    <img src={anniversary14} alt="Anniversary ke-14 image" />
+                  </span>
                 </div>
                 <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
                   <Calendar className="w-4 h-4 text-orange-600 inline mr-2" />
@@ -113,8 +115,8 @@ const Surat = () => {
                   Anniversary ke-14
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Surat dengan tema resep kue masa depan kita berdua, lengkap dengan 
-                  bahan-bahan cinta dan cara membuatnya...
+                  Surat dengan tema resep kue masa depan kita berdua, lengkap
+                  dengan bahan-bahan cinta dan cara membuatnya...
                 </p>
                 <div className="mt-4 text-orange-500 text-sm font-medium">
                   Baca Selengkapnya →

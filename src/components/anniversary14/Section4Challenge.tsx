@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ldr from "../../assets/images/anniversary-14/2-ldr.jpg";
 
 const Section4Challenge = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -79,7 +80,7 @@ const Section4Challenge = () => {
           <div className="animate-in">
             <div className="challenge-bg relative overflow-hidden rounded-3xl shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=400&fit=crop&auto=format"
+                src={ldr}
                 alt="Challenge"
                 className="w-full h-80 object-cover"
               />

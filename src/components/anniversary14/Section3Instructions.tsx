@@ -38,27 +38,6 @@ const Section3Instructions = () => {
     return emojis[step - 1] || "❤️";
   };
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    // Progressive line fill animation
-    const progressLine = section.querySelector(".progress-line");
-    if (progressLine) {
-      createScrollAnimation(
-        progressLine,
-        { scaleY: 0 },
-        { scaleY: 1, ease: "none" },
-        {
-          trigger: section,
-          start: "top 80%",
-          end: "bottom 20%",
-          scrub: 1,
-        }
-      );
-    }
-  }, [createScrollAnimation]);
-
   return (
     <AnimatedSection
       ref={sectionRef}
@@ -71,20 +50,14 @@ const Section3Instructions = () => {
           Cara Membuat:
         </h2>
 
-        {/* Progress Line */}
-        <div className="relative flex justify-center mb-8">
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gray-200 rounded-full" style={{ height: `${instructions.length * 220}px` }}>
-            <div className="progress-line w-full bg-gradient-to-b from-yellow-400 to-pink-400 rounded-full origin-top transform scale-y-0"></div>
-          </div>
-        </div>
-
         <div className="space-y-12 relative">
           {instructions.map((instruction, index) => (
             <div
               key={index}
               className={`instruction-step grid lg:grid-cols-2 gap-8 items-center relative ${
                 index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
-              }`}>
+              }`}
+            >
               {/* Step number circle positioned on the line */}
               <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg z-10 shadow-lg border-4 border-white">
                 {instruction.step}
