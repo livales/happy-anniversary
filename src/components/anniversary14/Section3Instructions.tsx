@@ -41,29 +41,55 @@ const Section3Instructions = () => {
     const section = sectionRef.current;
     if (!section) return;
 
+    // Animate title
     ScrollTrigger.create({
       trigger: section,
       start: "top 60%",
       end: "bottom 40%",
-      animation: gsap
-        .timeline()
-        .fromTo(
-          section.querySelector(".section-title"),
-          { opacity: 0, y: -30 },
-          { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
-        )
-        .fromTo(
-          section.querySelectorAll(".instruction-step"),
-          { opacity: 0, y: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            stagger: 0.3,
-            ease: "power2.out",
-          }
-        ),
+      animation: gsap.fromTo(
+        section.querySelector(".section-title"),
+        { opacity: 0, y: -30 },
+        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+      ),
     });
+
+    // Animate each step with stagger
+    gsap.fromTo(
+      section.querySelectorAll(".instruction-step"),
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.3,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 70%",
+          end: "bottom 30%",
+        }
+      }
+    );
+
+    // Parallax animation for step icons
+    section.querySelectorAll(".step-icon").forEach((icon, index) => {
+      gsap.to(icon, {
+        y: -30 - (index * 10),
+        rotation: 360,
+        scale: 1.1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
   }, []);
 
   return (
@@ -107,7 +133,7 @@ const Section3Instructions = () => {
                 }`}
               >
                 <div className="relative rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500 bg-gradient-to-br from-pink-100/80 to-purple-100/80 backdrop-blur-sm border border-white/50 h-64 lg:h-80 flex items-center justify-center overflow-hidden">
-                  <div className="text-6xl lg:text-8xl animate-pulse">
+                  <div className="step-icon text-6xl lg:text-8xl animate-pulse">
                     {getStepEmoji(instruction.step)}
                   </div>
                   <div className="absolute inset-0 pointer-events-none">

@@ -27,9 +27,9 @@ const ScrollFloatingParticles = () => {
 
     const container = containerRef.current;
     
-    // Calculate particles based on scroll progress
-    const baseParticleCount = 3;
-    const maxParticleCount = 15;
+    // Calculate particles based on scroll progress - reduced for performance
+    const baseParticleCount = 1;
+    const maxParticleCount = 5;
     const currentParticleCount = Math.floor(
       baseParticleCount + (maxParticleCount - baseParticleCount) * scrollProgress
     );
@@ -38,51 +38,51 @@ const ScrollFloatingParticles = () => {
     const createParticle = (type: "heart" | "flower") => {
       const particle = document.createElement("div");
       const symbols = {
-        heart: ["💕", "💖", "💗", "💝", "❤️"],
-        flower: ["🌸", "🌺", "🌻", "🌷", "🌹", "🌼"],
+        heart: ["💕", "💖", "💗"],
+        flower: ["🌸", "🌺", "🌷"],
       };
       
       particle.innerHTML = symbols[type][Math.floor(Math.random() * symbols[type].length)];
       particle.className = "absolute text-lg pointer-events-none z-10";
       particle.style.left = Math.random() * 100 + "vw";
-      particle.style.opacity = String(0.4 + scrollProgress * 0.4);
-      particle.style.fontSize = `${1 + scrollProgress}rem`;
+      particle.style.opacity = String(0.3 + scrollProgress * 0.3);
+      particle.style.fontSize = `${0.8 + scrollProgress * 0.5}rem`;
 
       container.appendChild(particle);
 
-      const duration = 4 + Math.random() * 3;
-      const delay = Math.random() * 2;
+      const duration = 6 + Math.random() * 4;
+      const delay = Math.random() * 1;
 
       gsap.fromTo(
         particle,
         {
-          y: "100vh",
+          y: "-10vh",
           rotation: 0,
-          scale: 0.5,
+          scale: 0.3,
         },
         {
-          y: "-10vh",
-          rotation: 360 + Math.random() * 360,
-          scale: 0.8 + Math.random() * 0.4,
-          x: (Math.random() - 0.5) * 200,
+          y: "110vh",
+          rotation: 180 + Math.random() * 180,
+          scale: 0.6 + Math.random() * 0.3,
+          x: (Math.random() - 0.5) * 150,
           duration,
           delay,
-          ease: "none",
+          ease: "power1.inOut",
           onComplete: () => particle.remove(),
         }
       );
     };
 
-    // Create particles based on scroll progress
+    // Create particles from start of scroll - reduced frequency
     const particleInterval = setInterval(() => {
-      if (scrollProgress > 0.1) {
+      if (scrollProgress > 0.05) {
         for (let i = 0; i < currentParticleCount; i++) {
           setTimeout(() => {
-            createParticle(Math.random() > 0.6 ? "heart" : "flower");
-          }, i * 300);
+            createParticle(Math.random() > 0.7 ? "heart" : "flower");
+          }, i * 500);
         }
       }
-    }, 2000);
+    }, 3000);
 
     return () => {
       clearInterval(particleInterval);
@@ -121,10 +121,10 @@ const ScrollFloatingParticles = () => {
     };
 
     const floatingInterval = setInterval(() => {
-      if (scrollProgress > 0.3) {
+      if (scrollProgress > 0.2) {
         createFloatingHeart();
       }
-    }, 3000 - scrollProgress * 2000);
+    }, 4000 - scrollProgress * 1500);
 
     return () => {
       clearInterval(floatingInterval);
