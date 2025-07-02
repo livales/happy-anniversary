@@ -1,14 +1,14 @@
 import { SectionData } from "../components/anniversary/AnniversarySection";
 
-import image1 from "../assets/images/1-anniversary.jpg";
-import image2 from "../assets/images/2-battlefield.jpg";
-import image3 from "../assets/images/3-proud.jpg";
-import image4 from "../assets/images/4-promise.jpg";
-import image5 from "../assets/images/5-open.jpg";
-import image6 from "../assets/images/6-future.jpg";
-import image7 from "../assets/images/7-missing-you.jpg";
-import image8 from "../assets/images/8-together.jpg";
-import image9 from "../assets/images/9-dandelions-field.jpg";
+import image1 from "../assets/images/anniversary-13/1-anniversary.jpg";
+import image2 from "../assets/images/anniversary-13/2-battlefield.jpg";
+import image3 from "../assets/images/anniversary-13/3-proud.jpg";
+import image4 from "../assets/images/anniversary-13/4-promise.jpg";
+import image5 from "../assets/images/anniversary-13/5-open.jpg";
+import image6 from "../assets/images/anniversary-13/6-future.jpg";
+import image7 from "../assets/images/anniversary-13/7-missing-you.jpg";
+import image8 from "../assets/images/anniversary-13/8-together.jpg";
+import image9 from "../assets/images/anniversary-13/9-dandelions-field.jpg";
 
 const sections: SectionData[] = [
   {

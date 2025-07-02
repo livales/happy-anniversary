@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { Calendar, Lock } from "lucide-react";
 
-import image1 from "../assets/images/1-anniversary.jpg";
+import anniversary13 from "../assets/images/anniversary-13/1-anniversary.jpg";
+import anniversary14 from "../assets/images/anniversary-14/1-anniversary.jpg";
 
 const Surat = () => {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -65,7 +66,7 @@ const Surat = () => {
               <div className="h-48 bg-gradient-to-br from-pink-200 to-purple-200 relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="text-6xl">
-                    <img src={image1} alt="Anniversary ke-13 image" />
+                    <img src={anniversary13} alt="Anniversary ke-13 image" />
                   </span>
                 </div>
                 <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
@@ -90,40 +91,39 @@ const Surat = () => {
             </div>
           </Link>
 
-          {/* Card 2: Next Letter (Placeholder) */}
-          <div
-            ref={(el) => (cardsRef.current[1] = el)}
-            className="bg-white/60 rounded-xl shadow-lg overflow-hidden cursor-not-allowed relative"
-          >
-            <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300 relative overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Lock className="w-12 h-12 text-gray-400" />
+          {/* Card 2: 14th Anniversary Letter - Now Available */}
+          <Link to="/surat/anniversary-14">
+            <div
+              ref={(el) => (cardsRef.current[1] = el)}
+              className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform transition-all duration-300"
+            >
+              <div className="h-48 bg-gradient-to-br from-orange-200 to-yellow-200 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-6xl">
+                    <img src={anniversary14} alt="Anniversary ke-14 image" />
+                  </span>
+                </div>
+                <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <Calendar className="w-4 h-4 text-orange-600 inline mr-2" />
+                  <span className="text-sm font-medium text-orange-600">
+                    14 Bulan
+                  </span>
+                </div>
               </div>
-              <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
-                <Calendar className="w-4 h-4 text-gray-500 inline mr-2" />
-                <span className="text-sm font-medium text-gray-500">
-                  14 Bulan
-                </span>
+              <div className="p-6">
+                <h3 className="font-dancing text-2xl text-orange-600 mb-2">
+                  Anniversary ke-14
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Surat dengan tema resep kue masa depan kita berdua, lengkap
+                  dengan bahan-bahan cinta dan cara membuatnya...
+                </p>
+                <div className="mt-4 text-orange-500 text-sm font-medium">
+                  Baca Selengkapnya →
+                </div>
               </div>
             </div>
-            <div className="p-6">
-              <h3 className="font-dancing text-2xl text-gray-500 mb-2">
-                Anniversary ke-14
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Surat berikutnya akan segera hadir untuk melengkapi koleksi
-                kenangan indah kita...
-              </p>
-              <div className="mt-4 text-gray-400 text-sm font-medium">
-                Segera Hadir...
-              </div>
-            </div>
-            <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px] flex items-center justify-center">
-              <div className="bg-white px-4 py-2 rounded-full shadow-lg">
-                <span className="text-gray-600 font-medium">Segera Hadir</span>
-              </div>
-            </div>
-          </div>
+          </Link>
 
           {/* Card 3: Future Letter (Placeholder) */}
           <div

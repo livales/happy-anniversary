@@ -1,6 +1,5 @@
-
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 const Gift = () => {
   const flowerRef = useRef<HTMLDivElement>(null);
@@ -16,63 +15,75 @@ const Gift = () => {
 
     // Timeline for flower growth animation
     const flowerTimeline = gsap.timeline({ delay: 0.5 });
-    
+
     flowerTimeline
-      .fromTo('.flower-stem', 
+      .fromTo(
+        ".flower-stem",
         { height: 0 },
-        { height: '120px', duration: 2, ease: 'power2.out' }
+        { height: "120px", duration: 2, ease: "power2.out" }
       )
-      .fromTo('.flower-bud',
+      .fromTo(
+        ".flower-bud",
         { scale: 0, rotation: 0 },
-        { scale: 1, rotation: 360, duration: 1.5, ease: 'back.out(1.7)' },
-        '-=0.5'
+        { scale: 1, rotation: 360, duration: 1.5, ease: "back.out(1.7)" },
+        "-=0.5"
       )
-      .fromTo('.petal',
+      .fromTo(
+        ".petal",
         { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'back.out(1.7)' },
-        '-=0.5'
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+        },
+        "-=0.5"
       );
 
     // Bears animation
     const bearsTimeline = gsap.timeline({ delay: 3 });
-    
+
     bearsTimeline
-      .fromTo('.bear-left',
+      .fromTo(
+        ".bear-left",
         { x: -200, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.5, ease: 'power2.out' }
+        { x: 0, opacity: 1, duration: 1.5, ease: "power2.out" }
       )
-      .fromTo('.bear-right',
+      .fromTo(
+        ".bear-right",
         { x: 200, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.5, ease: 'power2.out' },
-        '-=1'
+        { x: 0, opacity: 1, duration: 1.5, ease: "power2.out" },
+        "-=1"
       )
-      .to(['.bear-left', '.bear-right'],
-        { x: 0, duration: 0.5, ease: 'power2.inOut' }
-      );
+      .to([".bear-left", ".bear-right"], {
+        x: 0,
+        duration: 0.5,
+        ease: "power2.inOut",
+      });
 
     // Floating particles animation
-    gsap.set('.particle', { 
+    gsap.set(".particle", {
       x: () => gsap.utils.random(-50, 50),
       y: () => gsap.utils.random(-50, 50),
-      scale: () => gsap.utils.random(0.5, 1.5)
+      scale: () => gsap.utils.random(0.5, 1.5),
     });
 
-    gsap.to('.particle', {
-      y: '-=20',
+    gsap.to(".particle", {
+      y: "-=20",
       duration: 2,
-      ease: 'power1.inOut',
+      ease: "power1.inOut",
       stagger: 0.1,
       repeat: -1,
-      yoyo: true
+      yoyo: true,
     });
 
-    gsap.to('.particle', {
+    gsap.to(".particle", {
       rotation: 360,
       duration: 4,
-      ease: 'none',
-      repeat: -1
+      ease: "none",
+      repeat: -1,
     });
-
   }, []);
 
   return (
@@ -88,7 +99,7 @@ const Gift = () => {
               top: `${Math.random() * 100}%`,
             }}
           >
-            {i % 3 === 0 ? '💕' : i % 3 === 1 ? '✨' : '🌸'}
+            {i % 3 === 0 ? "💕" : i % 3 === 1 ? "✨" : "🌸"}
           </div>
         ))}
       </div>
@@ -106,7 +117,10 @@ const Gift = () => {
           </div>
 
           {/* Flower Animation - Fixed positioning */}
-          <div ref={flowerRef} className="relative flex flex-col items-center h-64">
+          <div
+            ref={flowerRef}
+            className="relative flex flex-col items-center h-64"
+          >
             <div className="flower-bud relative z-10">
               <div className="w-16 h-16 bg-yellow-300 rounded-full relative">
                 {/* Petals */}
@@ -124,7 +138,10 @@ const Gift = () => {
           </div>
 
           {/* Bears Animation */}
-          <div ref={bearsRef} className="relative flex items-center justify-center space-x-8 h-32">
+          <div
+            ref={bearsRef}
+            className="relative flex items-center justify-center space-x-8 h-32"
+          >
             <div className="bear-left text-6xl">🧸</div>
             <div className="bear-right text-6xl">🧸</div>
           </div>
@@ -132,7 +149,8 @@ const Gift = () => {
           {/* Message */}
           <div className="space-y-4 max-w-lg mx-auto">
             <p className="text-gray-700 text-lg italic">
-              "Seperti bunga yang mekar dengan indah, cinta kita akan terus tumbuh dan berkembang."
+              "Seperti bunga yang mekar dengan indah, cinta kita akan terus
+              tumbuh dan berkembang."
             </p>
             <p className="font-dancing text-2xl text-pink-600">
               Dengan seluruh cinta,
