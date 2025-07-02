@@ -59,7 +59,7 @@ const Anniversary14 = () => {
         <ScrollTopButton />
 
         {/* Fixed Cake Animation */}
-        <div className="fixed top-20 right-4 lg:right-8 z-30 w-64 h-64 lg:w-80 lg:h-80">
+        <div className="fixed bottom-2 left-3 lg:bottom-6 lg:left-8 z-30 w-64 h-64 lg:w-80 lg:h-80">
           <CakeAnimation />
         </div>
 
