@@ -32,10 +32,10 @@ Pastikan sudah menginstall **Node.js & npm**.
 
 ```bash
 # Clone repository
-git clone https://github.com/livales/untuk-sayangku.git
+git clone https://github.com/livales/happy-anniversary.git
 
 # Masuk ke folder project
-cd untuk-sayangku
+cd happy-anniversary
 
 # Install dependencies
 npm install
