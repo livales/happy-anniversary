@@ -1,53 +1,49 @@
-# 💕 Untuk Sayangku
+# 💕 Happy Anniversary
 
-**Home | Surat | Gift**
+Selamat datang di ruang digital kecil kita.  
+Website ini aku buat untuk menyimpan semua surat, cerita, dan kenangan perjalanan cinta kita — dari hari pertama hingga nanti, selamanya.
 
-Untuk Sayangku,  
-Ini adalah ruang digital kecil kita, tempat aku menyimpan semua surat dan kenangan untukmu di setiap langkah perjalanan kita.
-
-Selamat datang di galeri hati kita. 🌸
+Di sini, setiap momen jadi abadi.  
+Karena setiap kata, setiap rindu, dan setiap senyumanmu terlalu berharga untuk hilang begitu saja. 🌸
 
 ---
 
-## 💌 Surat Cinta
+## ✨ Tentang Project
 
-Sayangku yang terkasih,
-
-Setiap hari bersamamu adalah halaman baru dalam cerita cinta kita yang indah...  
-Terima kasih telah menjadi alasan aku tersenyum setiap hari.
-
-Dengan cinta,
+> _“Untuk Sayangku”_ adalah galeri hati digital — tempat menyimpan surat cinta, hadiah digital, dan kenangan yang kita ukir bersama.  
+> Dibuat sebagai bentuk cinta dan apresiasi untuk seseorang yang selalu menjadi alasan aku tersenyum setiap hari. ❤️
 
 ---
 
 ## 🛠️ Teknologi yang Digunakan
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- [Vite](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://react.dev/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
 ---
 
 ## 🚀 Cara Menjalankan Project
 
-Pastikan sudah menginstall **Node.js & npm**  
+Pastikan sudah menginstall **Node.js & npm**.  
 👉 [Panduan install Node.js via nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
 ```bash
 # Clone repository
-git clone https://github.com/livales/happy-anniversary.git
+git clone https://github.com/livales/untuk-sayangku.git
 
 # Masuk ke folder project
-cd happy-anniversary
+cd untuk-sayangku
 
 # Install dependencies
 npm install
 
 # Jalankan server development
 npm run dev
-```
+
 
 > Dibuat dengan penuh cinta sebagai rumah digital untuk semua surat dan kenangan kita.
 > I love you, always. ❤️
+```
