@@ -102,8 +102,7 @@ const SeeYou2028 = () => {
 
         {/* Subtle message */}
         <p className="text-white/40 text-sm max-w-md mx-auto leading-relaxed">
-          Distance and time are just numbers. What matters is the promise we keep in our hearts. 
-          Until we meet again, I'll keep growing, learning, and becoming the person you deserve.
+          No words needed. Just time, growth, and actions that speak louder than anything I could say.
         </p>
 
         {/* Year indicator */}
