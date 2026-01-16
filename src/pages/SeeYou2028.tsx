@@ -108,7 +108,7 @@ const SeeYou2028 = () => {
         {/* Year indicator */}
         <div className="mt-16 flex items-center justify-center gap-8 text-white/30">
           <div className="text-center">
-            <div className="text-2xl font-light">2025</div>
+            <div className="text-2xl font-light">2026</div>
             <div className="text-xs mt-1">Now</div>
           </div>
           <div className="flex items-center gap-2">
