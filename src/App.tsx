@@ -9,6 +9,7 @@ import Surat from "./pages/Surat";
 import Gift from "./pages/Gift";
 import Anniversary13 from "./pages/Anniversary13";
 import Anniversary14 from "./pages/Anniversary14";
+import SeeYou2028 from "./pages/SeeYou2028";
 import "./index.css";
 import NotFound from "./pages/NotFound";
 
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/surat" element={<Surat />} />
             <Route path="/surat/anniversary-13" element={<Anniversary13 />} />
             <Route path="/surat/anniversary-14" element={<Anniversary14 />} />
+            <Route path="/surat/see-you-2028" element={<SeeYou2028 />} />
             <Route path="/gift" element={<Gift />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

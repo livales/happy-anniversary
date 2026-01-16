@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
-import { Calendar, Lock } from "lucide-react";
+import { Calendar, Clock } from "lucide-react";
 
 import anniversary13 from "../assets/images/anniversary-13/1-anniversary.jpg";
 import anniversary14 from "../assets/images/anniversary-14/1-anniversary.jpg";
@@ -125,33 +125,36 @@ const Surat = () => {
             </div>
           </Link>
 
-          {/* Card 3: Future Letter (Placeholder) */}
-          <div
-            ref={(el) => (cardsRef.current[2] = el)}
-            className="bg-white/40 rounded-xl shadow-lg overflow-hidden cursor-not-allowed relative"
-          >
-            <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-4xl text-gray-300">💌</span>
+          {/* Card 3: See You in 2028 */}
+          <Link to="/surat/see-you-2028">
+            <div
+              ref={(el) => (cardsRef.current[2] = el)}
+              className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform transition-all duration-300"
+            >
+              <div className="h-48 bg-gradient-to-br from-slate-800 to-indigo-900 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-5xl">🌙</span>
+                </div>
+                <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <Clock className="w-4 h-4 text-indigo-600 inline mr-2" />
+                  <span className="text-sm font-medium text-indigo-600">
+                    2028
+                  </span>
+                </div>
               </div>
-              <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full">
-                <Calendar className="w-4 h-4 text-gray-400 inline mr-2" />
-                <span className="text-sm font-medium text-gray-400">Soon</span>
+              <div className="p-6">
+                <h3 className="font-dancing text-2xl text-indigo-600 mb-2">
+                  See You in 2028
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  A promise written in the stars. Until we meet again, I will be better...
+                </p>
+                <div className="mt-4 text-indigo-500 text-sm font-medium">
+                  Read More →
+                </div>
               </div>
             </div>
-            <div className="p-6">
-              <h3 className="font-dancing text-2xl text-gray-400 mb-2">
-                Surat Berikutnya...
-              </h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                Cerita cinta kita akan terus berlanjut dengan surat-surat indah
-                lainnya...
-              </p>
-              <div className="mt-4 text-gray-300 text-sm font-medium">
-                Coming Soon...
-              </div>
-            </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
